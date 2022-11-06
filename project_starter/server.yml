@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: DangDHH / Udacity
+Description: >
+  DangDHH / Udacity
 
 Parameters: 
   EnvironmentName:
@@ -12,8 +13,7 @@ Resources:
     Properties:
       GroupDescription: Allow http to our load balancer
       VpcId:
-        Fn::ImportValue:
-          !Sub "${EnvironmentName}-VPCID"
+        Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: 80
@@ -29,8 +29,7 @@ Resources:
     Properties:
       GroupDescription: Allow http to our hosts and SSH from local only
       VpcId:
-        Fn::ImportValue:
-          !Sub "${EnvironmentName}-VPCID"
+        Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: 8080
@@ -59,12 +58,12 @@ Resources:
       # ToDo: Change the key-pair name, as applicable to you. 
       KeyName: dangdhh_devops
       SecurityGroups:
-      - Ref: WebServerSecGroup
+        - Ref: WebServerSecGroup
       InstanceType: t3.micro
       BlockDeviceMappings:
-      - DeviceName: "/dev/sdk"
-        Ebs:
-          VolumeSize: '10'
+        - DeviceName: "/dev/sdk"
+          Ebs:
+            VolumeSize: '10'
   WebAppGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
