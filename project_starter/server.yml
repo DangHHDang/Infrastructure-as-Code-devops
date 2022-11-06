@@ -56,7 +56,7 @@ Resources:
       # ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: ami-047a51fa27710816e
       # ToDo: Change the key-pair name, as applicable to you. 
-      KeyName: dangdhh_devops
+      KeyName: 
       SecurityGroups:
         - Ref: WebServerSecGroup
       InstanceType: t3.micro
